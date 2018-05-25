@@ -63,7 +63,7 @@ class QuoteManager(models.Manager):
 class Quote(models.Model):
     quote_author= models.CharField(max_length=255)
     quote_message=models.CharField(max_length=500)
-    quote_creator = models.ForeignKey(User,on_delete=models.CASCADE,related_name='created_quotes')
+    quote_creator = models.ForeignKey(User,related_name='created_quotes')
     favorites = models.ManyToManyField(User,related_name='favorites')
     created_at= models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)

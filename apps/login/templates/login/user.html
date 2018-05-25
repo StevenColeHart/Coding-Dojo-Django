@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+        {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href="{% static 'login/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/logout">logout</a>
+    <a href="/success">dashboard</a>
+    <h1>Posts by {{creator.name}}</h1>
+
+    {{ total_quotes }}
+    <div id="login">
+            {% if quotes %}
+            {% for quote in quotes %}
+            <p>{{quote.quote_author}}:{{quote.quote_message}}
+
+            </p>
+            {%endfor%}
+        {% endif %}
+    </div>
+</body>
+</html>

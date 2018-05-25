@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+#wrapper_index{
+    background:
+    linear-gradient(135deg, #708090 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px),
+    linear-gradient(225deg, #708090 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px)0 64px;
+    background-color:#708090;
+    background-size: 64px 128px;
+    height: 1000px;
+    padding-left: 320px;
+
+}
+.registration{
+    display:inline-block;
+    border:2px solid black;
+    width: 350px;
+    margin-left: 20px;
+    margin-top: 300px;
+    background: whitesmoke;
+    vertical-align: top;
+    height: 220px;
+    }
+.registration p {
+    font-size: 20px
+}
+.registration p input {
+    size: 60px;
+}
+#quote {
+    border: 1px solid black;
+    text-align: center;
+    width: 300px;
+    height: 150px;
+}
+table{
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+.messages{
+    color: tomato;
+    size: 40px;
+    text-decoration: none;
+}
+
+

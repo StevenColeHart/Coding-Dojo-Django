@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+		{% load static %}
+	<head>
+		<link rel='stylesheet' href="{% static 'login/style.css' %}">
+
+		<title>Users</title>
+	</head>
+	<body>
+		<div id="wrapper"></div>
+			{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+					<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+			<h1>Success! Welcome,{{user.alias}}</h1>
+			<a href="/logout">logout</a>
+			<div id="quote">
+				<h3>Contribute a Quote:</h3>
+				<form action="/new" method='POST'>
+				{% csrf_token %}
+				<p>By:<input type="text" name="quote_author" style="width: 200px"></p>
+				<p>Message:<input type="text" style="width: 200px; height: 60px;" name="quote_message"></p>
+				<input type="submit" value="add">
+				</form>	
+			</div>
+
+			<div>
+				<h3> Quoteable Quotes</h3>
+				{% if quotes %}
+					{% for quote in quotes %}
+					<p>{{quote.quote_author}}:{{quote.quote_message}}
+						<br>
+						<form action="/fav/{{quote.id}}" method="POST">
+							{% csrf_token %}
+							<input type="submit" value="Add to My Fav">
+						</form>
+						posted by <a href="/user/{{quote.quote_creator.id}}">{{quote.quote_creator.name}}</a>
+					</p>
+					{%endfor%}
+				{% endif %}
+			</div>
+				<h3> Favorite Quotes </h3>
+				{% for quote in user.favorites.all %}
+				<div>
+					<p>{{quote.quote_author}}:{{quote.quote_message}}
+							<br>
+							<form action="/drop/{{quote.id}}" method="POST">
+								{% csrf_token %}
+								<input type="submit" value="Remove from my list">
+							</form>
+							posted by <a href="/user/{{quote.quote_creator.id}}">{{quote.quote_creator.name}}</a>
+						</p>
+					{%endfor%}
+				</div>
+		</div>
+    </body>
+</html>
